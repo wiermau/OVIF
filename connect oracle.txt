@@ -1,0 +1,51 @@
+TODO CON ROOT
+
+
+archivo oracle con usuario root en /etc/init.d
+
+
+#!/bin/sh
+#
+case "$1" in
+  start)
+        su - oracle -c "/u01/app/oracle/product/11.2.0/dbhome_1/bin/dbstart /u01/app/oracle/product/11.2.0/dbhome_1"
+        ;;
+  stop)
+        su - oracle -c "/u01/app/oracle/product/11.2.0/dbhome_1/bin/dbshut /u01/app/oracle/product/11.2.0/dbhome_1"
+        ;;
+esac
+
+exit 0
+
+
+Revisar con 
+   vi /etc/init.d/oracle
+
+y sacarle los ^M que pudieran aparecer
+
+
+
+chmod a+x /etc/init.d/oracle
+
+
+ln -s /etc/init.d/oracle /etc/rc.d/rc0.d/K04oracle
+ln -s /etc/init.d/oracle /etc/rc.d/rc2.d/K04oracle
+ln -s /etc/init.d/oracle /etc/rc.d/init.d/oracle
+ln -s /etc/init.d/oracle /etc/rc.d/rc3.d/K04oracle
+ln -s /etc/init.d/oracle /etc/rc.d/rc3.d/S94oracle
+ln -s /etc/init.d/oracle /etc/rc.d/rc5.d/K04oracle
+ln -s /etc/init.d/oracle /etc/rc.d/rc5.d/S94oracle
+ln -s /etc/init.d/oracle /etc/rc.d/rc6.d/K04oracle
+ln -s /etc/init.d/oracle /etc/rc.d/rc1.d/K04oracle
+ln -s /etc/init.d/oracle /etc/rc.d/rc4.d/K04oracle
+
+
+
+
+para ver si funcionan los scripts 
+
+/etc/init.d/oracle start
+
+y esto para bajara 
+
+/etc/init.d/oracle stop
