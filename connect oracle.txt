@@ -49,3 +49,6 @@ para ver si funcionan los scripts
 y esto para bajara 
 
 /etc/init.d/oracle stop
+
+
+#modif
